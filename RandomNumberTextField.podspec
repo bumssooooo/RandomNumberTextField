@@ -31,7 +31,6 @@ TODO: Add long description of the pod here.
   s.ios.deployment_target = '10.0'
 
   s.source_files = 'RandomNumberTextField/Classes/**/*'
-  s.swift_versions = '5.0'
   
   # s.resource_bundles = {
   #   'RandomNumberTextField' => ['RandomNumberTextField/Assets/*.png']

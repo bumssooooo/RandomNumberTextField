@@ -15,9 +15,10 @@
 		5E6086C9EB6E78E137C0033F03E08113 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
 		67872064D4B0FFD6FF2A340F7A842D25 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
 		A21960D1BE8CDDB649C485DB7E1A78B2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
-		D8A56E60290FB76600F34C02 /* RandomNumberKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A56E5D290FB76500F34C02 /* RandomNumberKeyboard.swift */; };
-		D8A56E61290FB76600F34C02 /* RandomNumberKeyboard.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8A56E5E290FB76500F34C02 /* RandomNumberKeyboard.xib */; };
-		D8A56E62290FB76600F34C02 /* RandomNumberTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A56E5F290FB76500F34C02 /* RandomNumberTextField.swift */; };
+		D8A56E68290FBFD100F34C02 /* RandomNumberTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A56E64290FBFD100F34C02 /* RandomNumberTextField.swift */; };
+		D8A56E69290FBFD100F34C02 /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = D8A56E65290FBFD100F34C02 /* .gitkeep */; };
+		D8A56E6A290FBFD100F34C02 /* RandomNumberKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A56E66290FBFD100F34C02 /* RandomNumberKeyboard.swift */; };
+		D8A56E6B290FBFD100F34C02 /* RandomNumberKeyboard.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8A56E67290FBFD100F34C02 /* RandomNumberKeyboard.xib */; };
 		E79C86CD83E8844EC696B14584A39596 /* Pods-RandomNumberTextField_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = ECEAEA2F783043CE3148B48E4F529CC0 /* Pods-RandomNumberTextField_Tests-dummy.m */; };
 /* End PBXBuildFile section */
 
@@ -64,9 +65,10 @@
 		C80C0D094D627C901DFFAEFD975F8AAC /* Pods-RandomNumberTextField_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-RandomNumberTextField_Example-acknowledgements.plist"; sourceTree = "<group>"; };
 		CEB56C99312237EA3C74E9A0B373E03B /* Pods-RandomNumberTextField_Example-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-RandomNumberTextField_Example-Info.plist"; sourceTree = "<group>"; };
 		D20C046B37681F60BC7F63DF6018BDE8 /* Pods-RandomNumberTextField_Example */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-RandomNumberTextField_Example"; path = Pods_RandomNumberTextField_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D8A56E5D290FB76500F34C02 /* RandomNumberKeyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomNumberKeyboard.swift; sourceTree = "<group>"; };
-		D8A56E5E290FB76500F34C02 /* RandomNumberKeyboard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RandomNumberKeyboard.xib; sourceTree = "<group>"; };
-		D8A56E5F290FB76500F34C02 /* RandomNumberTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomNumberTextField.swift; sourceTree = "<group>"; };
+		D8A56E64290FBFD100F34C02 /* RandomNumberTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomNumberTextField.swift; sourceTree = "<group>"; };
+		D8A56E65290FBFD100F34C02 /* .gitkeep */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
+		D8A56E66290FBFD100F34C02 /* RandomNumberKeyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomNumberKeyboard.swift; sourceTree = "<group>"; };
+		D8A56E67290FBFD100F34C02 /* RandomNumberKeyboard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RandomNumberKeyboard.xib; sourceTree = "<group>"; };
 		E22981918481E9C0ACF96E667C7538D6 /* Pods-RandomNumberTextField_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-RandomNumberTextField_Tests.modulemap"; sourceTree = "<group>"; };
 		E46AC8622AB799FBC6EF3024EB24EE8B /* Pods-RandomNumberTextField_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-RandomNumberTextField_Example-frameworks.sh"; sourceTree = "<group>"; };
 		ECEAEA2F783043CE3148B48E4F529CC0 /* Pods-RandomNumberTextField_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-RandomNumberTextField_Tests-dummy.m"; sourceTree = "<group>"; };
@@ -180,9 +182,7 @@
 		C6563DC0D4881F49DFC7D3FBF8A2F724 /* RandomNumberTextField */ = {
 			isa = PBXGroup;
 			children = (
-				D8A56E5D290FB76500F34C02 /* RandomNumberKeyboard.swift */,
-				D8A56E5E290FB76500F34C02 /* RandomNumberKeyboard.xib */,
-				D8A56E5F290FB76500F34C02 /* RandomNumberTextField.swift */,
+				D8A56E63290FBFD100F34C02 /* Classes */,
 				E696B4912DC591CDCCAF034386A2E8A5 /* Pod */,
 				BA9DA1B9585AFE5783090F27B10E97D8 /* Support Files */,
 			);
@@ -217,6 +217,18 @@
 				997B6249100A3EDC8511758913A71B98 /* RandomNumberTextField.framework */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		D8A56E63290FBFD100F34C02 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				D8A56E64290FBFD100F34C02 /* RandomNumberTextField.swift */,
+				D8A56E65290FBFD100F34C02 /* .gitkeep */,
+				D8A56E66290FBFD100F34C02 /* RandomNumberKeyboard.swift */,
+				D8A56E67290FBFD100F34C02 /* RandomNumberKeyboard.xib */,
+			);
+			name = Classes;
+			path = RandomNumberTextField/Classes;
 			sourceTree = "<group>";
 		};
 		E696B4912DC591CDCCAF034386A2E8A5 /* Pod */ = {
@@ -368,7 +380,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D8A56E61290FB76600F34C02 /* RandomNumberKeyboard.xib in Resources */,
+				D8A56E6B290FBFD100F34C02 /* RandomNumberKeyboard.xib in Resources */,
+				D8A56E69290FBFD100F34C02 /* .gitkeep in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -395,9 +408,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D8A56E60290FB76600F34C02 /* RandomNumberKeyboard.swift in Sources */,
+				D8A56E68290FBFD100F34C02 /* RandomNumberTextField.swift in Sources */,
 				2EC1FEC132BDA20B7BC02961CABAC8C1 /* RandomNumberTextField-dummy.m in Sources */,
-				D8A56E62290FB76600F34C02 /* RandomNumberTextField.swift in Sources */,
+				D8A56E6A290FBFD100F34C02 /* RandomNumberKeyboard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
