@@ -1,0 +1,16 @@
+PODS:
+  - RandomNumberTextField (0.1.0)
+
+DEPENDENCIES:
+  - RandomNumberTextField (from `../`)
+
+EXTERNAL SOURCES:
+  RandomNumberTextField:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  RandomNumberTextField: 60cdda8416b703636f3a293bb3a328a74b7cc6f6
+
+PODFILE CHECKSUM: 2ea59cec89ccd2bc6a7bffadd7a970d0e74c07f4
+
+COCOAPODS: 1.11.2

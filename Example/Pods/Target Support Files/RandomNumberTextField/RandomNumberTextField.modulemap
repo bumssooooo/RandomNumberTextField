@@ -1,0 +1,6 @@
+framework module RandomNumberTextField {
+  umbrella header "RandomNumberTextField-umbrella.h"
+
+  export *
+  module * { export * }
+}

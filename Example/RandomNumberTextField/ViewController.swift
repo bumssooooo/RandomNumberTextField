@@ -7,18 +7,41 @@
 //
 
 import UIKit
+import RandomNumberTextField
 
 class ViewController: UIViewController {
-
+    @IBOutlet weak var sbKeyboard: RandomNumberTextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        hideKeyboardWhenTappedAround()
+        configureCbKeyboard()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func configureCbKeyboard() {
+        let cbKeyboard = RandomNumberTextField()
+        cbKeyboard.backgroundColor = .blue
+        view.addSubview(cbKeyboard)
+        cbKeyboard.translatesAutoresizingMaskIntoConstraints = false
+        cbKeyboard.heightAnchor.constraint(equalToConstant: 40.0).isActive = true
+        cbKeyboard.widthAnchor.constraint(equalToConstant: 120.0).isActive = true
+        cbKeyboard.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        cbKeyboard.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        cbKeyboard.setKeyboardBackgroundColor(.red)
     }
+}
 
+
+extension ViewController{
+    func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self,
+                                                                 action: #selector(dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
 }
 
