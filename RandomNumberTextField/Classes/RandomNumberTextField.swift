@@ -20,8 +20,8 @@ public class RandomNumberTextField: UITextField {
         configureKeyboardView()
     }
     
-    public override func layoutSubviews() {
-        keyboardView?.shuffleNumbers()
+    override public func layoutSubviews() {
+        configureKeyboardView()
     }
 
     private func configureKeyboardView() {
@@ -32,7 +32,7 @@ public class RandomNumberTextField: UITextField {
         inputView = keyboardView
         keyboardView.delegate = self
     }
-    
+
     private func loadViewFromNib(nib: String) -> UIView? {
         let bundle = Bundle(for: type(of: self))
         let nib = UINib(nibName: nib, bundle: bundle)
@@ -54,24 +54,32 @@ public extension RandomNumberTextField {
     }
     
     func shuffleKeyboardNumbers() {
-        keyboardView?.shuffleNumbers()
+        // keyboardView?.shuffleNumbers()
     }
 }
 
 extension RandomNumberTextField: RandomNumberKeyboardDelegate {
-    func outputData(_ num: Int?) {
-        var newText = ""
-        
-        if let num = num {
-            newText = (text ?? "") + num.toString
-        } else {
-            if let curText = text,
-                curText != "" {
-                newText = curText
-                newText.removeLast()
-            }
+    func outputData(_ input: KeyboardIput) {
+        switch input {
+        case .number(let number):
+            numberHandler(number)
+        case .order(let order):
+            orderHandler(order)
         }
-        
-        self.text = newText
+    }
+    
+    private func numberHandler(_ number: Int) {
+        text = (text ?? "") + number.toString
+    }
+    
+    private func orderHandler(_ order: KeyboardIput.Order) {
+        switch order {
+        case .delete:
+            text?.popLast()
+        case .clear:
+            text?.removeAll()
+        case .complete:
+            resignFirstResponder()
+        }
     }
 }

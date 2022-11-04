@@ -7,7 +7,7 @@
 
 
 ## 📸 Preview
-<img src="https://user-images.githubusercontent.com/73675540/198973316-f814734d-235d-44a4-a8e4-bc2f994e5b94.gif" width="40%" height="40%/"><br>
+<img src="https://user-images.githubusercontent.com/73675540/199937967-98e03144-1511-47d6-8487-8316629cf39d.gif" width="40%" height="40%/"><br>
 
 ## 🏗 Installation
 * [CocoaPods](https://guides.cocoapods.org/using/using-cocoapods.html):

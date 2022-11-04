@@ -8,33 +8,80 @@
 import UIKit
 
 protocol RandomNumberKeyboardDelegate {
-    func outputData(_ num: Int?)
+    func outputData(_ input: KeyboardIput)
+}
+
+enum KeyboardIput {
+    enum Order {
+        case delete, clear, complete
+    }
+    
+    case number(Int)
+    case order(Order)
 }
 
 class RandomNumberKeyboard: UIView {
-    @IBOutlet var oneButton: UIButton!
-    @IBOutlet var twoButton: UIButton!
-    @IBOutlet var threeButton: UIButton!
-    @IBOutlet var fourButton: UIButton!
-    @IBOutlet var fiveButton: UIButton!
-    @IBOutlet var sixButton: UIButton!
-    @IBOutlet var sevenButton: UIButton!
-    @IBOutlet var eightButton: UIButton!
-    @IBOutlet var nineButton: UIButton!
-    @IBOutlet var zeroButton: UIButton!
-    @IBOutlet var deleteButton: UIButton!
+    @IBOutlet var numberButtons: [UIButton]!
+    @IBOutlet weak var deleteButton: UIButton!
+    @IBOutlet weak var clearButton: UIButton!
+    @IBOutlet weak var completeButton: UIButton!
+    private var allButtons: [UIButton] {
+        return numberButtons + [deleteButton, clearButton, completeButton]
+    }
     
     static let ideytifier = "RandomNumberKeyboard"
-    private var numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+    private var numbers: [Int?] = []
     var delegate: RandomNumberKeyboardDelegate?
- 
+    
     internal func configure() {
-        setBackgroundColor(.black)
-        setFont(UIFont.systemFont(ofSize: 24.0, weight: .bold))
-        setTitleColor(.white, for: .normal)
-        shuffleNumbers()
+        addTargetNumberButtons()
+        setButtonsCornerRadius(4.0)
+        shuffleNumberButtons()
+    }
+    
+    internal func shuffleNumberButtons() {
+        numbers = makeRandomNumbers()
+        configureNumberButtons()
     }
 }
+
+// MARK: Configure Methods
+
+private  extension RandomNumberKeyboard {
+    // generate random numbers
+    func makeRandomNumbers() -> [Int?] {
+        var numbers: [Int?] = []
+        (0..<numberButtons.count).forEach {
+            $0 <= 9 ? numbers.append($0) : numbers.append(nil)
+        }
+        return numbers.shuffled()
+    }
+    
+    // configure number buttons by random numbers
+    func configureNumberButtons() {
+        zip(numbers, numberButtons).forEach { number, button in
+            guard let number = number else {
+                button.setTitle("", for: .normal)
+                button.isEnabled = false
+                button.backgroundColor = .clear
+                return
+            }
+            button.setTitle(number.toString, for: .normal)
+            button.isEnabled = true
+            button.backgroundColor = .white
+        }
+    }
+    
+    // add target number buttons
+    func addTargetNumberButtons() {
+        numberButtons.enumerated().forEach { index, button in
+            button.tag = index
+            button.addTarget(self, action: #selector(numberButtonTapped), for: .touchUpInside)
+        }
+    }
+}
+
+// MARK: Attribute Methods
 
 internal extension RandomNumberKeyboard {
     func setBackgroundColor(_ color: UIColor?) {
@@ -42,93 +89,44 @@ internal extension RandomNumberKeyboard {
     }
     
     func setFont(_ font: UIFont) {
-        [
-            zeroButton,
-            oneButton,
-            twoButton,
-            threeButton,
-            fourButton,
-            fiveButton,
-            sixButton,
-            sevenButton,
-            eightButton,
-            nineButton,
-        ].enumerated().forEach { idx, button in
-            button?.titleLabel?.font = font
+        allButtons.forEach { button in
+            button.titleLabel?.font = font
         }
     }
     
     func setTitleColor(_ color: UIColor?, for state: UIControl.State) {
-        [
-            zeroButton,
-            oneButton,
-            twoButton,
-            threeButton,
-            fourButton,
-            fiveButton,
-            sixButton,
-            sevenButton,
-            eightButton,
-            nineButton,
-        ].enumerated().forEach { idx, button in
-            button?.setTitleColor(color, for: state)
+        allButtons.forEach { button in
+            button.setTitleColor(color, for: state)
         }
         deleteButton.tintColor = color
     }
-    
-    func shuffleNumbers() {
-        numbers = numbers.shuffled()
-        
-        [
-            zeroButton,
-            oneButton,
-            twoButton,
-            threeButton,
-            fourButton,
-            fiveButton,
-            sixButton,
-            sevenButton,
-            eightButton,
-            nineButton,
-        ].enumerated().forEach { idx, button in
-            button?.setTitle(numbers[idx].toString, for: .normal)
+
+    private func setButtonsCornerRadius(_ cornerRadius: Double) {
+        allButtons.forEach { button in
+            button.layer.cornerRadius = cornerRadius
         }
     }
 }
 
 private extension RandomNumberKeyboard {
-    @IBAction func oneButtonTapped(_ sender: Any) {
-        delegate?.outputData(numbers[1])
+    @objc func numberButtonTapped(sender: UIButton) {
+        let index = sender.tag
+        guard numbers.count > index,
+              let number = numbers[index] else {
+            return
+        }
+        delegate?.outputData(KeyboardIput.number(number))
     }
-    @IBAction func twoButtonTapped(_ sender: Any) {
-        delegate?.outputData(numbers[2])
-    }
-    @IBAction func threeButtonTapped(_ sender: Any) {
-        delegate?.outputData(numbers[3])
-    }
-    @IBAction func fourButtonTapped(_ sender: Any) {
-        delegate?.outputData(numbers[4])
-    }
-    @IBAction func fiveButtonTapped(_ sender: Any) {
-        delegate?.outputData(numbers[5])
-    }
-    @IBAction func sixButtonTapped(_ sender: Any) {
-        delegate?.outputData(numbers[6])
-    }
-    @IBAction func sevenButtonTapped(_ sender: Any) {
-        delegate?.outputData(numbers[7])
-    }
-    @IBAction func eightButtonTapped(_ sender: Any) {
-        delegate?.outputData(numbers[8])
-    }
-    @IBAction func nineButtonTapped(_ sender: Any) {
-        delegate?.outputData(numbers[9])
-    }
-    @IBAction func zeroButtonTapped(_ sender: Any) {
-        delegate?.outputData(numbers[0])
-    }
+    
     @IBAction func deleteButtonTapped(_ sender: Any) {
-        delegate?.outputData(nil)
+        delegate?.outputData(KeyboardIput.order(.delete))
+    }
+    
+    @IBAction func clearButtonTapped(_ sender: Any) {
+        delegate?.outputData(KeyboardIput.order(.clear))
+    }
+    @IBAction func completeButtonTapped(_ sender: Any) {
+        delegate?.outputData(KeyboardIput.order(.complete))
     }
 }
 

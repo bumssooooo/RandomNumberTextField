@@ -27,7 +27,6 @@ class ViewController: UIViewController {
         cbKeyboard.widthAnchor.constraint(equalToConstant: 120.0).isActive = true
         cbKeyboard.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         cbKeyboard.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-        cbKeyboard.setKeyboardBackgroundColor(.red)
     }
 }
 
